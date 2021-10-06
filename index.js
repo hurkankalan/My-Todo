@@ -1,34 +1,20 @@
 // Création du texte defilant dans notre h1
-let chain = "To do list project in JavaScript."; 
-let numberOfCharacters = chain.length; 
-let tableau = chain.split("");
-let text = [];
-let txt = '';
+let messageToDisplay = "To do list project in JavaScript."; 
+let displayedMessage = ""
+let i = 0;
 
-// On crée une boucle qui incrémente chaque lettre 
-for (let i = 0; i < numberOfCharacters; i++) {
-    text[i] = txt + tableau[i];
-    //console.log(text);
-    txt = text[i];
-    //console.log(txt)
-};
-
-let currentText = 0;
-
-function changeMessage(){
-    document.querySelector("h1").innerHTML = text[currentText];
-    currentText++;
-    if(currentText >= text.length)
-        currentText = chain.length - 1;
-}
-
-if(document.querySelector)
-    setInterval("changeMessage()", 100); // 2eme parametre = vitesse de defilement : plus la valeur est faible plus le texte s'affiche rapidement)
+setInterval(()=>{
+    if(i < messageToDisplay.length){
+        displayedMessage += messageToDisplay[i];
+        document.querySelector("h1").innerText = displayedMessage
+        i++
+    }
+}, 100);
 
 // Création des références
 const ul = document.querySelector('ul');
 const form = document.querySelector('form');
-const input = document.querySelector('form > input'); // on recupere uniquement l'input qui est à l'interieur de <form>
+const input = document.querySelector('form > input');
 
 // Creation d'une variable de type array qui contiendra plusieurs objects qui représente notre liste
 const todos = [
@@ -105,8 +91,12 @@ const displaytodo = () => {
         };
     })
     ul.innerHTML = '';
-    ul.append(...todosNode); /* On convertit notre tableau de nodes en liste de nodes (en utilisant l'opérateur spread).
-    Cette conversion est obligatoire car la méthode append() prend en parametre une liste de nodes séparés par des virgules, pas un tableau */
+    ul.append(...todosNode);
+    /*
+    On convertit notre tableau de nodes en liste de nodes (en utilisant l'opérateur spread).
+    Cette conversion est obligatoire car la méthode append() prend en parametre une liste de nodes séparés par des virgules,
+    pas un tableau
+    */
 };
 
 displaytodo(); // on fait un appel de la fonction displaytodo pour qu'elle soit executé et que nos <li> soit affiché dans le DOM
