@@ -1,3 +1,3 @@
 ** PRESENTATION **
 
-![Screenshot](project_image)
+[Screenshot](project_image)
