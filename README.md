@@ -1,3 +1,3 @@
 ** PRESENTATION **
 
-[Screenshot](project_image)
+<img src="project_image" width="350" title="hover text">
